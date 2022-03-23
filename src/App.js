@@ -12,13 +12,12 @@ function App() {
   for(let i = 0; i < today; i++) {
     day_list.push(day_list.shift());
   }
-  const [days, setDays] = React.useState(day_list);
-  
+
   return (
     <Wrap className="flex-column">
       <Container className="flex-column">
         <Routes>
-          <Route path="/" element={<Main list={days}/>} />
+          <Route path="/" element={<Main list={day_list}/>} />
           <Route path="/detail/:day" element={<Detail />} />
         </Routes>
       </Container>

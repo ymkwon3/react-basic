@@ -3,34 +3,30 @@ import React from "react";
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
 
-const Detail = props => {
+const Detail = () => {
   const navigate = useNavigate();
   const day = useParams().day;
   const [grade, setGrade] = React.useState(-1);
 
-  let circle_list = [];
-  for (let i = 0; i < 5; i++) {
-    circle_list.push(
-      grade >= i ? (
-        <Circle bc="#fff010" key={i} onClick={() => setGrade(i)} />
-      ) : (
-        <Circle key={i} onClick={() => setGrade(i)} />
-      )
-    );
-  }
-
   // 키보드 입력
-  window.onkeydown = (e) => {
-    if(e.key >= 1 && e.key <= 5)
-      setGrade(e.key - 1);
-  }
+  window.onkeydown = e => {
+    if (e.key >= 1 && e.key <= 5) setGrade(e.key - 1);
+  };
 
   return (
     <Div className="flex-column">
       <h2>
         <span>{day}요일</span> 평점 남기기
       </h2>
-      <div className="flex-row">{circle_list.map(v => v)}</div>
+      <div className="flex-row">
+        {Array.from({ length: 5 }, (_, i) => {
+          return grade >= i ? (
+            <Circle bc="#fff010" key={i} onClick={() => setGrade(i)} />
+          ) : (
+            <Circle key={i} onClick={() => setGrade(i)} />
+          );
+        })}
+      </div>
       <StyledBtn onClick={() => navigate("/")}>평점 남기기</StyledBtn>
     </Div>
   );

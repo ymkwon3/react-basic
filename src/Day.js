@@ -7,19 +7,13 @@ const Day = props => {
 
   // 랜덤함수를 이용해 0~4까지의 수를 지정합니다.
   let rand = parseInt(Math.random() * 5);
-
-  // 랜덤변수만큼 노란색의 Circle을 리스트에 담고 나머지는 회색 CIrcle로 담습니다.
-  let jsx_list = [];
-  for (let i = 0; i < 5; i++) {
-    jsx_list.push(
-      rand >= i ? <Circle bc="#fff010" key={i} /> : <Circle key={i} />
-    );
-  }
-
+  
   return (
     <div className="flex-row" style={{ margin: "10px 0" }}>
       <div style={{ fontWeight: "bold" }}>{props.day}</div>
-      {jsx_list.map(v => v)}
+      {Array.from({ length: 5 }, (_, i) => {
+        return rand >= i ? <Circle bc="#fff010" key={i} /> : <Circle key={i} />;
+      })}
       <Tri onClick={() => navigate("/detail/" + props.day)}></Tri>
     </div>
   );
@@ -28,7 +22,7 @@ const Day = props => {
 const Circle = styled.div`
   width: 30px;
   height: 30px;
-  background-color: ${props => props.bc ? props.bc : "#ddd"};
+  background-color: ${props => (props.bc ? props.bc : "#ddd")};
   border-radius: 50px;
   border: none;
   margin: 0 5px;
@@ -58,7 +52,7 @@ const Tri = styled.div`
     transform: scale(1.2);
   }
   &:active {
-    transform: scale(1.0);
+    transform: scale(1);
   }
 `;
 
