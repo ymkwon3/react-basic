@@ -7,12 +7,11 @@ const Day = props => {
 
   // 랜덤함수를 이용해 0~4까지의 수를 지정합니다.
   let rand = parseInt(Math.random() * 5);
-  
   return (
     <div className="flex-row" style={{ margin: "10px 0" }}>
       <div style={{ fontWeight: "bold" }}>{props.day}</div>
       {Array.from({ length: 5 }, (_, i) => {
-        return rand >= i ? <Circle bc="#fff010" key={i} /> : <Circle key={i} />;
+        return rand >= i ? <Circle bc="#fff010" key={`daysCircle${i}`} /> : <Circle key={`daysCircle${i}`} />;
       })}
       <Tri onClick={() => navigate("/detail/" + props.day)}></Tri>
     </div>

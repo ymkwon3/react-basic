@@ -7,17 +7,11 @@ import Main from "./Main";
 import Detail from "./Detail";
 
 function App() {
-  let day_list = ["일", "월", "화", "수", "목", "금", "토"];
-  let today = new Date().getDay();
-  for(let i = 0; i < today; i++) {
-    day_list.push(day_list.shift());
-  }
-
   return (
     <Wrap className="flex-column">
       <Container className="flex-column">
         <Routes>
-          <Route path="/" element={<Main list={day_list}/>} />
+          <Route path="/" element={<Main/>} />
           <Route path="/detail/:day" element={<Detail />} />
         </Routes>
       </Container>

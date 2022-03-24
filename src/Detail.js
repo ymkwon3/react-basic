@@ -6,12 +6,12 @@ import { useNavigate, useParams } from "react-router-dom";
 const Detail = () => {
   const navigate = useNavigate();
   const day = useParams().day;
+
+  // 키 입력을 받아 리렌더링을 위한 state
   const [grade, setGrade] = React.useState(-1);
 
   // 키보드 입력
-  window.onkeydown = e => {
-    if (e.key >= 1 && e.key <= 5) setGrade(e.key - 1);
-  };
+  window.onkeydown = e => e.key >= 1 && e.key <= 5 ?  setGrade(e.key - 1) : null;
 
   return (
     <Div className="flex-column">
@@ -21,9 +21,9 @@ const Detail = () => {
       <div className="flex-row">
         {Array.from({ length: 5 }, (_, i) => {
           return grade >= i ? (
-            <Circle bc="#fff010" key={i} onClick={() => setGrade(i)} />
+            <Circle bc="#fff010" key={`detailCircle${i}`} onClick={() => setGrade(i)} />
           ) : (
-            <Circle key={i} onClick={() => setGrade(i)} />
+            <Circle key={`detailCircle${i}`} onClick={() => setGrade(i)} />
           );
         })}
       </div>
