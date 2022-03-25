@@ -5,10 +5,12 @@ import React from 'react';
 
 import Main from "./Main";
 import Detail from "./Detail";
+import Bike from "./Bike";
 
 function App() {
   return (
     <Wrap className="flex-column">
+      {/* <Bike></Bike> */}
       <Container className="flex-column">
         <Routes>
           <Route path="/" element={<Main/>} />
