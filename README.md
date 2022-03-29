@@ -23,6 +23,11 @@
 
 * 별점남기기
   - <br>해당 요일의 별점을 클릭을 통해 정할 수 있습니다.
+
+
+![image](https://user-images.githubusercontent.com/48580444/160514037-7ef584c3-ea2b-4571-9cde-8c39004e0234.png)
+![image](https://user-images.githubusercontent.com/48580444/160514069-951ad165-e268-47a9-a750-e68d68d0e82b.png)
+
   
 
 ## 4. 회고
